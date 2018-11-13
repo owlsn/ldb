@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# cmake temprory files
+**/CMakeFiles/
+Testing/
+CMakeCache.txt
+**/CPackConfig.cmake
+CPackSourceConfig.cmake
+CTestTestfile.cmake
+cmake_install.cmake
+**/Makefile
