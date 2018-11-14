@@ -29,24 +29,24 @@ set(PROJECT_VERSION_MAJOR 1)
 set(PROJECT_VERSION_MINOR 01)
 set(PROJECT_VERSION_PATCH 01)
 
-include_directories(${SOURCE_DIR}/main)
+include_directories(${SOURCE_DIR})
 #设置依赖库
-aux_source_directory(${SOURCE_DIR}/main DIR_SRCS)
-add_subdirectory(${SOURCE_DIR}/main)
-add_executable(main ${DIR_SRCS})
+aux_source_directory(${SOURCE_DIR} DIR_SRCS)
+add_subdirectory(${SOURCE_DIR})
+add_executable(ldb ${DIR_SRCS})
 #设置安装路径
-install(TARGETS main DESTINATION ${COMPILE_DIR}/bin)
+install(TARGETS ldb DESTINATION ${COMPILE_DIR}/bin)
 
 #添加测试
 enable_testing()
-add_test(test_run main)
+add_test(test_run ldb)
 #测试帮助信息是否可以正常提示
-add_test(test_usage main)
+add_test(test_usage ldb)
 set_tests_properties(test_usage
-  PROPERTIES PASS_REGULAR_EXPRESSION "main")
+  PROPERTIES PASS_REGULAR_EXPRESSION "ldb")
 # 测试宏
 macro(do_test arg1 arg2 result)
-    add_test(test_${arg1}_${arg2} main ${arg1} ${arg2})
+    add_test(test_${arg1}_${arg2} ldb ${arg1} ${arg2})
     set_tests_properties(test_${arg1}_${arg2}
     PROPERTIES PASS_REGULAR_EXPRESSION ${result}
     )
